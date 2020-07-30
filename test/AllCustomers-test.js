@@ -14,11 +14,16 @@ describe('AllCustomers', function() {
   });
 
   it('Should hold all customers', function() {
-
     expect(AllCustomers.customers).to.deep.equal([
       {"id": 1, "name": "Leatha Ullrich"},
       {"id": 2, "name": "Rocio Schuster"},
       {"id": 3, "name": "Kelvin Schiller"}
     ]);
   });
+
+  it('Should get customer Id by name', function() {
+    const customerId = AllCustomers.getCustomerIdByName("Leatha Ullrich")
+
+    expect(customerId).to.equal(1);
+  })
 });

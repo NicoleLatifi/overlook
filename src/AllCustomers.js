@@ -1,6 +1,8 @@
-const AllCustomers = {
-  customers: [],
-
+class AllCustomers {
+  constructor(customers){
+    this.customers = customers;
+  }
+    
   getCustomerIdByName(name) {
     //starting with array of objects with properties id and name
     //end result is one name
@@ -8,7 +10,8 @@ const AllCustomers = {
     //this will return the full customer object
     //add .id to the end to get just the id
     return this.customers.find(customer => {
-      return name === customer.name
+      return customer.name.includes(name)
+      // return name === customer.name
     }).id
   }
 }

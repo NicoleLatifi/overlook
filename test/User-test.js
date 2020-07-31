@@ -24,11 +24,18 @@ describe('User', function() {
   });
 
   it('Should be able to be instantiated by manager', function() {
-    const username = "manager"
-    const user = new User(username, allCustomers)
+    const username = "manager";
+    const user = new User(username, allCustomers);
 
     expect(user).to.be.an.instanceof(User);
     expect(user.name).to.equal("manager");
+  })
+
+  it('Should alert a user if username is invalid', function() {
+    const username = "customerA";
+    const user = new User(username, allCustomers);
+
+    expect(user.name).to.equal("invalid username");
   })
 
 }); 

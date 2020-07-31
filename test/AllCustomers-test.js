@@ -32,5 +32,12 @@ describe('AllCustomers', function() {
     const customerId = allCustomers.getCustomerIdByName("Leatha");
 
     expect(customerId).to.equal(1);
+  });
+
+
+  it('Should give message when no customer is found', function() {
+    const customerId = allCustomers.getCustomerIdByName("Nicole");
+
+    expect(customerId).to.equal("No customer found with the name Nicole. Please try again.");
   })
 }); 

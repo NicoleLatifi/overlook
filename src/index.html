@@ -6,7 +6,7 @@
   </head>
   <body>
     <h1>Overlook</h1>
-    <section class="login-page">
+    <section id="login-page">
       <h2>Login</h2>
       <form>
         <label class="">username:</label>
@@ -18,15 +18,43 @@
         <button class="">submit</button>
       </form>
     </section>
-    <section class="customer-main-page">
+    <section class="admin-dashboard">
+
+    </section>
+    <section class="admin-book-room-page">
+      <h3>Customer Name:</h3>
+      <h3>Total Spent:</h3>
+    </section>
+
+    </section>
+    <section id="customer-welcome-page">
       <h2>Welcome, Nicole.</h2>
     </section>
-    <section class="book-room-page">
-      <article id="customer-select-dates-container">
-        <label class="future-date-text" for="arrival-date-input">Select date:<label>
-        <input type="date" class="booking-input" id="arrival-date-input" placeholder="mm/dd/yyyy">
-        <button type="button" id="customer-search-dates-button" aria-label='Add search Dates'>search</button>
+
+    <section id="customer-book-room-page">
+      <article class="select-date-container">
+        <label class="" for="date-input">Select date:<label>
+        <input type="date" class="" placeholder="mm/dd/yyyy">
+        <button type="button" aria-label='Search date'>search</button>
       </article>
+    </section>
+
+    <section class="customer-bookings-page">
+      <h3>Upcoming</h3>
+        <div class="booking-container">
+          <p>Booking info</p>
+          <p>Room info</p>
+        </div>
+      <h3>Current</h3>
+      <div class="booking-container">
+        <p>Booking info</p>
+        <p>Room info</p>
+      </div>
+      <h3>Past</h3>
+      <div class="booking-container">
+        <p>Booking info</p>
+        <p>Room info</p>
+      </div>
     </section>
 
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->

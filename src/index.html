@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
+    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
     <title>Overlook</title>
   </head>
   <body>
     <h1>Overlook</h1>
-
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    <section class="login-page">
+      <h2>Login</h2>
+      <form>
+        <label class="">username:</label>
+        <input maxlength="10" class="" type="text">
+        <label class="alert">username is required</label>
+        <label class="">password:</label>
+        <input maxlength="12" class="" type="password">
+        <label class="alert">password is required</label>
+        <button class="">submit</button>
+      </form>
+    </section>
+    <section class="customer-main-page">
+      <h2>Welcome, Nicole.</h2>
+    </section>
+    <section class="book-room-page">
+      <article id="customer-select-dates-container">
+        <label class="future-date-text" for="arrival-date-input">Select date:<label>
+        <input type="date" class="booking-input" id="arrival-date-input" placeholder="mm/dd/yyyy">
+        <button type="button" id="customer-search-dates-button" aria-label='Add search Dates'>search</button>
+      </article>
+    </section>
 
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>

@@ -8,3 +8,11 @@ import './css/base.scss';
 import './images/turing-logo.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
+
+body.addEventListener("click", clickHandler);
+
+function clickHandler() {
+  if (event.target.classList.contains("submit")) {
+    determineUser();
+  }
+}

@@ -2,24 +2,29 @@
 <html lang="en-US">
   <head>
     <title>overlook</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap">
   </head>
   <body>
     <header>
       <h1>overlook</h1>
-      <h2>customer1</h2>
-      <button>Book A Room</button>
-      <button>Bookings</button>
+      <h2 class="user">customer1</h2>
+      <nav class="hide">
+        <button>Book A Room</button>
+        <button>Bookings</button>
+        <button>Logout</button>
+      </nav>
     </header>
     <section id="login-page">
         <h3>Login</h3>
         <form>
-          <label class="">username:</label>
-          <input maxlength="10" class="" type="text">
-          <label class="alert">username is required</label>
-          <label class="">password:</label>
-          <input maxlength="12" class="" type="password">
-          <label class="alert">password is required</label>
-          <button class="">submit</button>
+          <label class="username">username:</label>
+          <input maxlength="10" class="username-input" type="text">
+          <label class="username-alert">username is required</label>
+          <label class="password">password:</label>
+          <input maxlength="12" class="password-input" type="password">
+          <label class="password-alert">password is required</label>
+          <button class="submit">submit</button>
         </form>
     </section>
     <section class="admin-dashboard hide">

@@ -1,12 +1,69 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Overlook</title>
+    <title>overlook</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap">
   </head>
   <body>
-    <h1>Overlook</h1>
+    <header>
+      <h1>overlook</h1>
+      <h2 class="user">customer1</h2>
+      <nav class="hide">
+        <button>Book A Room</button>
+        <button>Bookings</button>
+        <button>Logout</button>
+      </nav>
+    </header>
+    <section id="login-page">
+        <h3>Login</h3>
+        <form>
+          <label class="username">username:</label>
+          <input maxlength="10" class="username-input" type="text">
+          <label class="username-alert">username is required</label>
+          <label class="password">password:</label>
+          <input maxlength="12" class="password-input" type="password">
+          <label class="password-alert">password is required</label>
+          <button class="submit">submit</button>
+        </form>
+    </section>
+    <section class="admin-dashboard hide">
 
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    </section>
+    <section class="admin-book-room-page hide">
+      <h5>Customer Name:</h4>
+      <h5>Total Spent:</h4>
+    </section>
+
+    <section id="customer-welcome-page" class="hide">
+      <h3>Welcome, Nicole.</h3>
+    </section>
+
+    <section id="customer-book-room-page" class="hide">
+      <article class="select-date-container">
+        <label class="" for="date-input">Select date:<label>
+        <input type="date" class="" placeholder="mm/dd/yyyy">
+        <button type="button" aria-label='Search date'>search</button>
+      </article>
+    </section>
+
+    <section class="customer-bookings-page hide">
+      <h4>Upcoming</h4>
+        <div class="booking-container">
+          <p>Booking info</p>
+          <p>Room info</p>
+        </div>
+      <h4>Current</h4>
+      <div class="booking-container">
+        <p>Booking info</p>
+        <p>Room info</p>
+      </div>
+      <h4>Past</h4>
+      <div class="booking-container">
+        <p>Booking info</p>
+        <p>Room info</p>
+      </div>
+    </section>
 
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>

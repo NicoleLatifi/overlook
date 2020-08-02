@@ -16,15 +16,32 @@ import Manager from './Manager';
 const body = document.querySelector("body");
 const usernameInput = document.querySelector(".username-input");
 const passwordInput = document.querySelector(".password-input");
+let bookingsData = [];
 
 let customer;
 let manager;
 
-window.onload = domUpdates.resetLoginPage();
+window.onload = getData();
 body.addEventListener("click", clickHandler);
+
+function getData() {
+  getBookingsData();
+}
+
+function getBookingsData() {
+  fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings")
+    .then(response => response.json())
+    .then(data => storeBookingsData(data))
+    .catch(error => console.log(error));
+}
+
+function storeBookingsData(data){
+  bookingsData = data.bookings;
+}
 
 function clickHandler() {
   if (event.target.classList.contains("submit")) {
+    console.log(bookingsData[1])
     event.preventDefault();
     determineValidInput();
   }
@@ -76,8 +93,7 @@ function loginCustomer(name) {
 function loginManager() {
   clearForm();
   domUpdates.resetLoginPage();
-  console.log("manager")
-  manager = new Manager();
+  manager = new Manager(allBookings);
   domUpdates.hideLoginPage();
   domUpdates.displayManagerDashboard();
 }

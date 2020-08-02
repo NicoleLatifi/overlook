@@ -20,4 +20,10 @@ describe('Customer', function() {
     expect(customer.username).to.equal("customer1");
   })
 
+  it('should have an id', function() {
+    const customer = new Customer("customer1", 1);
+
+    expect(customer.id).to.equal(1);
+  })
+
 });

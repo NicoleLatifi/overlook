@@ -1,24 +1,16 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
 
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
-
-console.log('This is the JavaScript entry file - your code begins here.');
-
-
 import domUpdates from './domUpdates';
+import Hotel from './domUpdates';
 import Manager from './Manager';
 
 const body = document.querySelector("body");
-const usernameInput = document.querySelector(".username-input");
 const passwordInput = document.querySelector(".password-input");
-let bookingsData = [];
+const usernameInput = document.querySelector(".username-input");
 
+let bookingsData = [];
 let customer;
+let hotel;
 let manager;
 
 window.onload = getData();
@@ -37,11 +29,11 @@ function getBookingsData() {
 
 function storeBookingsData(data){
   bookingsData = data.bookings;
+  hotel = new Hotel(bookingsData);
 }
 
 function clickHandler() {
   if (event.target.classList.contains("submit")) {
-    console.log(bookingsData[1])
     event.preventDefault();
     determineValidInput();
   }
@@ -93,7 +85,7 @@ function loginCustomer(name) {
 function loginManager() {
   clearForm();
   domUpdates.resetLoginPage();
-  manager = new Manager(allBookings);
+  manager = new Manager(bookingsData);
   domUpdates.hideLoginPage();
   domUpdates.displayManagerDashboard();
 }

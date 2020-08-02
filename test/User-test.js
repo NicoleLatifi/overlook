@@ -3,7 +3,7 @@ import User from '../src/User';
 // import chai from 'chai';
 import { expect } from 'chai'
 
-describe('User', function() {
+describe.skip('User', function() {
   let customer1;
   let customer2;
   let customer3;
@@ -15,27 +15,27 @@ describe('User', function() {
     allCustomers = new AllCustomers([customer1, customer2, customer3])
   });
 
-  it('Should be able to be instantiated by customer input name', function() {
-    const username = "customer1"
-    const user = new User(username, allCustomers)
+  // it('Should be able to be instantiated by customer input name', function() {
+  //   const username = "customer1"
+  //   const user = new User(username, allCustomers)
 
-    expect(user).to.be.an.instanceof(User);
-    expect(user.name).to.equal("Leatha Ullrich");
-  });
+  //   expect(user).to.be.an.instanceof(User);
+  //   expect(user.name).to.equal("Leatha Ullrich");
+  // });
 
-  it('Should be able to be instantiated by manager', function() {
-    const username = "manager";
-    const user = new User(username, allCustomers);
+  // it('Should be able to be instantiated by manager', function() {
+  //   const username = "manager";
+  //   const user = new User(username, allCustomers);
 
-    expect(user).to.be.an.instanceof(User);
-    expect(user.name).to.equal("manager");
-  })
+  //   expect(user).to.be.an.instanceof(User);
+  //   expect(user.name).to.equal("manager");
+  // })
 
-  it('Should alert a user if username is invalid', function() {
-    const username = "customerA";
-    const user = new User(username, allCustomers);
+  // it('Should alert a user if username is invalid', function() {
+  //   const username = "customerA";
+  //   const user = new User(username, allCustomers);
 
-    expect(user.name).to.equal("invalid username");
-  })
+  //   expect(user.name).to.equal("invalid username");
+  // })
 
 }); 

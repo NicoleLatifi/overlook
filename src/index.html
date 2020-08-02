@@ -8,7 +8,7 @@
   <body>
     <header>
       <h1>overlook</h1>
-      <h2 class="user">customer1</h2>
+      <h2 class="user-title hide">customer1</h2>
       <nav class="hide">
         <button>Book A Room</button>
         <button>Bookings</button>
@@ -20,15 +20,16 @@
         <form>
           <label class="username">username:</label>
           <input maxlength="10" class="username-input" type="text">
-          <label class="username-alert">username is required</label>
+          <label class="username-alert hide">username is required</label>
           <label class="password">password:</label>
           <input maxlength="12" class="password-input" type="password">
-          <label class="password-alert">password is required</label>
-          <button class="submit">submit</button>
+          <label class="password-alert hide">password is required</label>
+          <label class="invalid-alert hide">invalid username, please try again</label>
+          <button class="submit">Submit</button>
         </form>
     </section>
     <section class="admin-dashboard hide">
-
+      <h2>Welcome, Admin.</h2>
     </section>
     <section class="admin-book-room-page hide">
       <h5>Customer Name:</h4>

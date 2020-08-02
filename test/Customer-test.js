@@ -15,15 +15,21 @@ describe('Customer', function() {
   });
 
   it('should have a username', function() {
-    const customer = new Customer("customer1");
+    const customer = new Customer("customer1", allCustomers, 1);
 
     expect(customer.username).to.equal("customer1");
   })
 
   it('should have an id', function() {
-    const customer = new Customer("customer1", 1);
+    const customer = new Customer("customer1", allCustomers, 1);
 
     expect(customer.id).to.equal(1);
+  })
+
+  it('should get its name', function() {
+    const customer = new Customer("customer1", allCustomers, 1);
+
+    expect(customer.name).to.equal("Leatha Ullrich");
   })
 
 });

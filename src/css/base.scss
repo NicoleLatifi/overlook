@@ -3,7 +3,8 @@ $main-background: #25274D;
 $button-background: #464866;
 $overlook-gray: #AAABB8;
 $username-white: #f3f3f3;
-$accent-color: #78244C;
+$accent-red: #78244C;
+$accent-green: complement($accent-red);
 
 $title-font: 'Montserrat', sans-serif;
 $main-font: 'Noto Sans TC', sans-serif;
@@ -18,6 +19,20 @@ $main-font: 'Noto Sans TC', sans-serif;
 body {
   background: $main-background;
 }
+
+h4 {
+  font-size: 24px;
+  text-align: center;
+}
+
+h5 {
+  color: $accent-green;
+  font-size: 48px;
+  text-align: center;
+  margin-top: 24px;
+}
+
+// HEADER //
 
 header {
   display: grid;
@@ -61,7 +76,6 @@ button {
   font-size: 1em;
   height: 55px;
   width: 120px;
-  // width: 138px;
 }
 
 button:hover {
@@ -88,7 +102,7 @@ button:active {
     margin: auto;
   }
 
-  .user {
+  .user-title {
     grid-area: 2 / 1 / 3 / 2;
     margin: auto;
     margin-top: 6px;
@@ -141,7 +155,7 @@ form {
 }
 
 .username-alert {
-  color: $accent-color;
+  color: $accent-red;
   font-style: italic;
   grid-area: 2 / 2 / 3 / 3;
   margin-left: 12px;
@@ -162,10 +176,10 @@ form {
   justify-self: start;
   margin-left: 12px;
   width: 400px;
-}
+} 
 
 .password-alert {
-  color: $accent-color;
+  color: $accent-red;
   font-style: italic;
   grid-area: 4 / 2 / 5 / 3;
   margin-left: 12px;
@@ -173,7 +187,7 @@ form {
 }
 
 .invalid-alert {
-  color: $accent-color;
+  color: $accent-red;
   font-style: italic;
   grid-area: 5 / 2 / 6 / 3;
   margin-left: 12px;
@@ -182,7 +196,6 @@ form {
 
 .submit {
   grid-area: 5 / 2 / 6 / 3;
-  // justify-content: end;
   margin-right: 0;
 }
 
@@ -194,4 +207,39 @@ form {
   section {
     width: 800px;
   }
+}
+
+// Manager Dashboard //
+.manager-dashboard {
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.date-today{
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.search-bar{
+  grid-area: 1 / 3 / 2 / 4;
+}
+
+.dashboard-card {
+  background-color: $username-white;
+  border-radius: 5px;
+  height: 250px;
+  padding: 32px;
+  width: 250px;
+}
+
+.rooms-available-card {
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+.total-revenue-card {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.occupancy-rate-card {
+  grid-area: 2 / 3 / 3 / 4;
 }

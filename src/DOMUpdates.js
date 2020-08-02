@@ -3,14 +3,15 @@ const domUpdates = {
   navButtons: document.querySelector("nav"),
   usernameAlert: document.querySelector(".username-alert"),
   passwordAlert: document.querySelector(".password-alert"),
+  invalidAlert: document.querySelector(".invalid-alert"),
 
+  // methods for login page
   resetLoginPage() {
     this.userTitle.classList.add('hide');
     this.navButtons.classList.add('hide');
     this.usernameAlert.classList.add('hide');
     this.passwordAlert.classList.add('hide');
-    firstInput.value = '';
-    secondInput.value = '';
+    this.invalidAlert.classList.add('hide')
   },
 
   addUsernameRequiredAlert() {
@@ -28,6 +29,12 @@ const domUpdates = {
   removePasswordRequiredAlert() {
     this.passwordAlert.classList.add('hide')
   },
+
+  alertMessage(message) {
+    console.log(message)
+    this.invalidAlert.classList.remove('hide')
+    this.invalidAlert.innerText = `${message}, please try again`;
+  }
 }
 
 export default domUpdates;

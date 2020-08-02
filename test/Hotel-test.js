@@ -7,6 +7,7 @@ describe('Hotel', function() {
   let room1, room2, room3;
   let roomsData;
   let dateToday = "2020/02/10";
+  let hotel;
   
   beforeEach(() => {
     booking1 = {
@@ -56,28 +57,24 @@ describe('Hotel', function() {
       "costPerNight": 491.14
       };
     roomsData = [room1, room2, room3];
+    hotel = new Hotel(bookingsData, roomsData, dateToday);
   });
 
-
   it('Should be instantiated with bookings and rooms', function() {
-    const hotel = new Hotel();
-
     expect(hotel).to.be.an.instanceof(Hotel);
   })
 
   it('Should calculate number of rooms available today', function() {
-    const hotel = new Hotel(bookingsData, roomsData, dateToday);
-
-    let numRoomsAvailableToday = hotel.getNumRoomsAvailableToday(bookingsData, roomsData);
+    let numRoomsAvailableToday = hotel.getNumRoomsAvailableToday();
 
     expect(numRoomsAvailableToday).to.equal(1);
   })
 
-  // it('Should calculate today\'s total revenue', function() {
-  //   const hotel = new Hotel();
+  it('Should calculate today\'s revenue', function() {
+    let revenueToday = hotel.getRevenueToday();
 
-  //   expect(hotel).to.be.an.instanceof(Hotel);
-  // })
+    expect(revenueToday).to.equal(835.78);
+  })
 
   // it('Should calculate today\s occupancy rate', function() {
   //   const hotel = new Hotel();

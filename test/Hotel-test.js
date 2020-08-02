@@ -6,6 +6,7 @@ describe('Hotel', function() {
   let bookingsData;
   let room1, room2, room3;
   let roomsData;
+  let dateToday = "2020/02/10";
   
   beforeEach(() => {
     booking1 = {
@@ -64,11 +65,13 @@ describe('Hotel', function() {
     expect(hotel).to.be.an.instanceof(Hotel);
   })
 
-  // it('Should calculate number of rooms available today', function() {
-  //   const hotel = new Hotel();
+  it('Should calculate number of rooms available today', function() {
+    const hotel = new Hotel(bookingsData, roomsData, dateToday);
 
-  //   expect(hotel).to.be.an.instanceof(Hotel);
-  // })
+    let numRoomsAvailableToday = hotel.getNumRoomsAvailableToday(bookingsData, roomsData);
+
+    expect(numRoomsAvailableToday).to.equal(1);
+  })
 
   // it('Should calculate today\'s total revenue', function() {
   //   const hotel = new Hotel();
@@ -82,3 +85,7 @@ describe('Hotel', function() {
   //   expect(hotel).to.be.an.instanceof(Hotel);
   // })
 })
+
+// 8 - getNumRoomsAvailableToday
+// 9 - getTodaysRevenue
+// 10 - getTodaysOccupancyRate

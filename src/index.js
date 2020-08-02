@@ -11,6 +11,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 
 import domUpdates from './domUpdates';
+import Manager from './Manager';
 
 const body = document.querySelector("body");
 const usernameInput = document.querySelector(".username-input");
@@ -54,7 +55,7 @@ function determineUser() {
   if (usernameInputRoot === "customer" && inputId >= 1 && inputId <= 50) {
     loginCustomer(usernameInputRoot);
   } else if (usernameInputRoot === "manager") {
-    loginManager(name);
+    loginManager();
   } else {
     domUpdates.alertMessage("invalid username");
     usernameInput.value = ''
@@ -72,8 +73,11 @@ function loginCustomer(name) {
   console.log(name)
 }
 
-function loginManager(name) {
+function loginManager() {
   clearForm();
-  domUpdates.resetLoginPage()
-  console.log(name)
+  domUpdates.resetLoginPage();
+  console.log("manager")
+  manager = new Manager();
+  domUpdates.hideLoginPage();
+  domUpdates.displayManagerDashboard();
 }

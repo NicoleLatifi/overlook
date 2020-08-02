@@ -19,7 +19,7 @@ const passwordInput = document.querySelector(".password-input");
 let customer;
 let manager;
 
-window.onload = domUpdates.resetLoginPage;
+window.onload = domUpdates.resetLoginPage();
 body.addEventListener("click", clickHandler);
 
 function clickHandler() {
@@ -42,7 +42,8 @@ function determineValidInput() {
   } else if (passwordInput.value === "overlook2020") {
     determineUser();
   } else {
-    alertMessage("invalid password");
+    domUpdates.alertMessage("invalid password");
+    passwordInput.value = ''
   }
 }
 
@@ -55,17 +56,14 @@ function determineUser() {
   } else if (usernameInputRoot === "manager") {
     loginManager(name);
   } else {
-    alertMessage("invalid username");
+    domUpdates.alertMessage("invalid username");
+    usernameInput.value = ''
   }
 }
 
-function alertMessage(message) {
-  console.log(message)
-}
-
 function clearForm() {
-  firstInput.value = '';
-  secondInput.value = '';
+  usernameInput.value = '';
+  passwordInput.value = '';
 }
 
 function loginCustomer(name) {

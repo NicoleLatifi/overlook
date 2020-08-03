@@ -54,6 +54,7 @@ function clickHandler() {
   if (event.target.classList.contains("submit")) {
     event.preventDefault();
     determineValidInput();
+    console.log(hotel);
   }
 }
 
@@ -103,5 +104,11 @@ function loginManager() {
   domUpdates.resetLoginPage();
   manager = new Manager(bookingsData);
   domUpdates.hideLoginPage();
+  loadManagerDashboard();
+}
+
+function loadManagerDashboard() {
+  console.log(hotel)
   domUpdates.displayManagerDashboard();
+  domUpdates.displayNumRoomsAvailableToday(hotel);
 }

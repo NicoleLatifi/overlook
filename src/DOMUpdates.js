@@ -48,9 +48,15 @@ const domUpdates = {
     this.invalidAlert.innerText = `${message}, please try again`;
   },
 
+  //methods for manager dashboard
   displayManagerDashboard() {
     this.displayFullHeader("manager")
     this.managerDashboard.classList.remove('hide');
+  },
+
+  displayNumRoomsAvailableToday(hotel) {
+    const numRoomsAvailable = document.querySelector('.num-rooms-available');
+    numRoomsAvailable.innerText = `${hotel.getNumRoomsAvailableToday()}`;
   }
 }
 

@@ -6,7 +6,7 @@ describe('Hotel', function() {
   let bookingsData;
   let room1, room2, room3;
   let roomsData;
-  let dateToday = "2020/02/10";
+  let dateToday = "2020/02/11";
   let hotel;
   
   beforeEach(() => {
@@ -20,7 +20,7 @@ describe('Hotel', function() {
     booking2 = {
       "id": "5fwrgu4i7k55hl7cy",
       "userID": 2,
-      "date": "2020/02/10",
+      "date": "2020/02/11",
       "roomNumber": 2,
       "roomServiceCharges": []
       };
@@ -73,12 +73,52 @@ describe('Hotel', function() {
   it('Should calculate today\'s revenue', function() {
     let revenueToday = hotel.getRevenueToday();
 
-    expect(revenueToday).to.equal(835);
+    expect(revenueToday).to.equal(968);
   })
 
   it('Should calculate today\s occupancy rate', function() {
     let occupancyRateToday = hotel.getOccupancyRateToday();
 
     expect(occupancyRateToday).to.equal(67);
+  })
+
+  it('Should be able to get a customer\'s past bookings', function() {
+    let pastBookings = hotel.getCustomerPastBookings(1);
+
+    let expectedPastBookings = [{
+      "id": "5fwrgu4i7k55hl7ar",
+      "userID": 1,
+      "date": "2020/02/10",
+      "roomNumber": 1,
+      "roomServiceCharges": []
+      }];
+
+    expect(pastBookings).to.deep.equal(expectedPastBookings);
+  })
+
+  it('Should be able to get a customer\'s current bookings', function() {
+    let currentBookings = hotel.getCustomerCurrentBookings(2)
+
+    let expectedCurrentBookings = [{
+      "id": "5fwrgu4i7k55hl7cy",
+      "userID": 2,
+      "date": "2020/02/11",
+      "roomNumber": 2,
+      "roomServiceCharges": []
+      }]
+
+    expect(currentBookings).to.deep.equal(expectedCurrentBookings);
+  })
+
+  it('Should be able to get a customer\'s upcoming bookings', function() {
+    let upcomingBookings = hotel.getCustomerUpcomingBookings(1)
+
+    expect(upcomingBookings).to.equal("You have no upcoming bookings.");
+  })
+
+  it('Should be able to get a customer\'s total spent amount', function() {
+    let totalSpent = hotel.getCustomerTotalSpent(1)
+
+    expect(totalSpent).to.equal(358.4);
   })
 })

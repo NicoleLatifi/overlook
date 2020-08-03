@@ -1,15 +1,15 @@
 import User from './User';
 
 class Customer extends User {
-  constructor(username, allCustomers, id) {
+  constructor(username, customersData, id) {
     super(username)
     this.id = id;
-    this.allCustomers = allCustomers;
+    this.customersData = customersData;
     this.name = this.getName();
   }
 
   getName() {
-    const foundCustomer = this.allCustomers.find(customer => {
+    const foundCustomer = this.customersData.find(customer => {
       return this.id === customer.id;
     });
     return foundCustomer.name;

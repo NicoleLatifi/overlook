@@ -1,6 +1,7 @@
 
 import './css/base.scss';
 import domUpdates from './domUpdates';
+import Customer from './Customer'
 import Hotel from './Hotel';
 import Manager from './Manager';
 import moment from 'moment';
@@ -53,8 +54,7 @@ function getCustomersData() {
 function clickHandler() {
   if (event.target.classList.contains("submit")) {
     event.preventDefault();
-    determineValidInput();
-    console.log(hotel);
+    determineValidInput();;
   }
 }
 
@@ -79,7 +79,7 @@ function determineUser() {
   let usernameInputId = usernameInput.value.slice(8);
   let inputId = parseInt(usernameInputId);
   if (usernameInputRoot === "customer" && inputId >= 1 && inputId <= 50) {
-    loginCustomer(usernameInputRoot);
+    loginCustomer(usernameInput.value, inputId);
   } else if (usernameInputRoot === "manager") {
     loginManager();
   } else {
@@ -93,10 +93,12 @@ function clearForm() {
   passwordInput.value = '';
 }
 
-function loginCustomer(name) {
+function loginCustomer(username, id) {
   clearForm();
   domUpdates.resetLoginPage()
-  console.log(name)
+  customer = new Customer(username, customersData.users, id)
+  domUpdates.hideLoginPage();
+  loadCustomerWelcomePage();
 }
 
 function loginManager() {
@@ -107,8 +109,15 @@ function loginManager() {
   loadManagerDashboard();
 }
 
+function loadCustomerWelcomePage() {
+  domUpdates.displayCustomerDashboard(customer.username, customer.name);
+  domUpdates.displayPastBookings(hotel, customer.id);
+  domUpdates.displayCurrentBookings(hotel, customer.id);
+  domUpdates.displayUpcomingBookings(hotel, customer.id);
+  domUpdates.displayRewardPoints(hotel, customer.id);
+}
+
 function loadManagerDashboard() {
-  console.log(hotel)
   domUpdates.displayManagerDashboard();
   domUpdates.displayDateToday(dateToday);
   domUpdates.displayNumRoomsAvailableToday(hotel)

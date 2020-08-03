@@ -77,12 +77,8 @@ describe('Hotel', function() {
   })
 
   // it('Should calculate today\s occupancy rate', function() {
-  //   const hotel = new Hotel();
+  //   let occupancyRateToday = hotel.getOccupancyRateToday();
 
-  //   expect(hotel).to.be.an.instanceof(Hotel);
+  //   expect(occupancyRateToday).to.equal(67);
   // })
 })
-
-// 8 - getNumRoomsAvailableToday
-// 9 - getTodaysRevenue
-// 10 - getTodaysOccupancyRate

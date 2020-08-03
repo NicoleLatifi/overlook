@@ -98,7 +98,7 @@ function loginCustomer(username, id) {
   clearForm();
   domUpdates.resetLoginPage()
   customer = new Customer(username, customersData.users, id)
-  console.log(customer);
+  loadCustomerWelcomePage();
 }
 
 function loginManager() {
@@ -107,6 +107,14 @@ function loginManager() {
   manager = new Manager(bookingsData);
   domUpdates.hideLoginPage();
   loadManagerDashboard();
+}
+
+function loadCustomerWelcomePage() {
+  domUpdates.displayCustomerDashboard(customer.username, customer.name);
+  domUpdates.displayPastBookings();
+  domUpdates.displayPastBookings();
+  domUpdates.displayPastBookings();
+  domUpdates.displayRewardPoints();
 }
 
 function loadManagerDashboard() {

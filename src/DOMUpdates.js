@@ -72,7 +72,28 @@ const domUpdates = {
   displayOccupancyRate(hotel) {
     const occupancyRate = document.querySelector('.occupancy-rate');
     occupancyRate.innerText = `${hotel.getOccupancyRateToday()}%`;
-  }
+  },
+
+  //methods for customer dashboard
+  displayCustomerDashboard(username, name) {
+    this.displayFullHeader(`${username} | ${name}`)
+    this.managerDashboard.classList.remove('hide');
+  },
+
+  displayPastBookings() {
+
+  },
+
+  displayPastBookings() {
+
+  },
+  displayPastBookings() {
+
+  },
+
+  displayRewardPoints() {
+
+  },
 }
 
 

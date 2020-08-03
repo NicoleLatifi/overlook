@@ -54,6 +54,11 @@ const domUpdates = {
     this.managerDashboard.classList.remove('hide');
   },
 
+  displayDateToday(dateToday) {
+    const today = document.querySelector('.today');
+    today.innerText = `${dateToday}`
+  },
+
   displayNumRoomsAvailableToday(hotel) {
     const numRoomsAvailable = document.querySelector('.num-rooms-available');
     numRoomsAvailable.innerText = `${hotel.getNumRoomsAvailableToday()}`;
@@ -62,6 +67,11 @@ const domUpdates = {
   displayRevenueToday(hotel) {
     const totalRevenue = document.querySelector('.total-revenue');
     totalRevenue.innerText = `$${hotel.getRevenueToday()}`;
+  },
+
+  displayOccupancyRate(hotel) {
+    const occupancyRate = document.querySelector('.occupancy-rate');
+    occupancyRate.innerText = `${hotel.getOccupancyRateToday()}%`;
   }
 }
 

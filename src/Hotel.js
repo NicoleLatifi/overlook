@@ -53,7 +53,7 @@ class Hotel {
     const pastBookings = this.bookingsData.filter(booking => {
       return this.reformatDate(booking.date) < this.reformatDate(this.dateToday) && booking.userID === customerId 
     })
-    if (pastBookings === undefined) {
+    if (pastBookings.length === 0) {
       return "You have no past bookings."
     } else {
       return pastBookings
@@ -64,10 +64,21 @@ class Hotel {
     const currentBookings = this.bookingsData.filter(booking => {
       return this.reformatDate(booking.date) === this.reformatDate(this.dateToday) && booking.userID === customerId 
     })
-    if (currentBookings === undefined) {
+    if (currentBookings.length === 0) {
       return "You have no current bookings."
     } else {
       return currentBookings
+    }
+  }
+
+  getCustomerFutureBookings(customerId) {
+    const futureBookings = this.bookingsData.filter(booking => {
+      return this.reformatDate(booking.date) > this.reformatDate(this.dateToday) && booking.userID === customerId 
+    })
+    if (futureBookings.length === 0) {
+      return "You have no future bookings."
+    } else {
+      return futureBookings
     }
   }
 }

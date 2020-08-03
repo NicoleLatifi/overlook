@@ -48,6 +48,12 @@ class Hotel {
     const reformattedDate = yyyy + mm + dd;
     return reformattedDate;
   }
+  
+    getRoomDetails(booking) {
+      return this.roomsData.find(room => {
+        return room.number === booking.roomNumber
+      })
+    }
 
   getCustomerPastBookings(customerId) {
     const pastBookings = this.bookingsData.filter(booking => {
@@ -90,7 +96,6 @@ class Hotel {
         })
         totalSpent += room.costPerNight
       }
-      console.log(totalSpent)
       return totalSpent
     }, 0)
   }

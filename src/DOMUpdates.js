@@ -91,12 +91,13 @@ const domUpdates = {
       pastCard.innerHTML += `<p>${pastBookings}</p>`
     } else {
       pastBookings.forEach(pastBooking => {
-        pastCard.innerHTML += `<p class="booking-top">date: ${pastBooking.date} </p>
-        <p>roomNumber: ${pastBooking.roomNumber}</p>
-        <p>roomType: ${pastBooking.roomType}</p>
-        <p>bedSize: ${pastBooking.bedSize}</p>
-        <p>numBeds: ${pastBooking.numBeds}</p>
-        <p class="booking-bottom">costPerNight: ${pastBooking.costPerNight}</p>`
+        const roomDetails = hotel.getRoomDetails(pastBooking);
+        pastCard.innerHTML += `<p class="booking-top">Date: ${pastBooking.date} </p>
+        <p>Room Number: ${pastBooking.roomNumber}</p>
+        <p>Type: ${roomDetails.roomType}</p>
+        <p>Bed Size: ${roomDetails.bedSize}</p>
+        <p>Number of Beds: ${roomDetails.numBeds}</p>
+        <p class="booking-bottom">Rate: $${roomDetails.costPerNight}/night</p>`
       })
     }
   },

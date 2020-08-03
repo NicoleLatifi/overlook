@@ -81,4 +81,12 @@ describe('Hotel', function() {
 
     expect(occupancyRateToday).to.equal(67);
   })
+
+  it('Should be able to get a customer\'s past bookings', function() {
+    dateToday = "2020/02/11";
+
+    let pastBookings = hotel.getCustomerPastBookings(1)
+
+    expect(pastBookings.id).to.equal("5fwrgu4i7k55hl7ar");
+  })
 })

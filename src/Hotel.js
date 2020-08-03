@@ -40,6 +40,20 @@ class Hotel {
     const occupancyRate = Math.round(numRoomsBooked / numOfRooms * 100);
     return occupancyRate;
   }
+
+  reformatDate(date) {
+    const yyyy = date.substring(0, 4);
+    const mm = date.substring(5, 7);
+    const dd = date.substring(8);
+    const reformattedDate = yyyy + mm + dd;
+    return reformattedDate;
+  }
+
+  getCustomerPastBookings(customerId) {
+    return this.bookingsData.find(booking => {
+      return this.reformatDate(booking.date) === this.reformatDate(this.dateToday) && booking.userID === customerId 
+    })
+  }
 }
 
 export default Hotel;

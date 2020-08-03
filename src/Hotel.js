@@ -71,14 +71,14 @@ class Hotel {
     }
   }
 
-  getCustomerFutureBookings(customerId) {
-    const futureBookings = this.bookingsData.filter(booking => {
+  getCustomerupcomingBookings(customerId) {
+    const upcomingBookings = this.bookingsData.filter(booking => {
       return this.reformatDate(booking.date) > this.reformatDate(this.dateToday) && booking.userID === customerId 
     })
-    if (futureBookings.length === 0) {
-      return "You have no future bookings."
+    if (upcomingBookings.length === 0) {
+      return "You have no upcoming bookings."
     } else {
-      return futureBookings
+      return upcomingBookings
     }
   }
 }

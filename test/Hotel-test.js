@@ -110,9 +110,9 @@ describe('Hotel', function() {
     expect(currentBookings).to.deep.equal(expectedCurrentBookings);
   })
 
-  it('Should be able to get a customer\'s future bookings', function() {
-    let futureBookings = hotel.getCustomerFutureBookings(1)
+  it('Should be able to get a customer\'s upcoming bookings', function() {
+    let upcomingBookings = hotel.getCustomerupcomingBookings(1)
 
-    expect(futureBookings).to.equal("You have no future bookings.");
+    expect(upcomingBookings).to.equal("You have no upcoming bookings.");
   })
 })

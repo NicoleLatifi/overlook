@@ -111,8 +111,14 @@ describe('Hotel', function() {
   })
 
   it('Should be able to get a customer\'s upcoming bookings', function() {
-    let upcomingBookings = hotel.getCustomerupcomingBookings(1)
+    let upcomingBookings = hotel.getCustomerUpcomingBookings(1)
 
     expect(upcomingBookings).to.equal("You have no upcoming bookings.");
+  })
+
+  it('Should be able to get a customer\'s total spent amount', function() {
+    let totalSpent = hotel.getCustomerTotalSpent(1)
+
+    expect(totalSpent).to.equal(358.4);
   })
 })

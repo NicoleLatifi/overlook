@@ -71,7 +71,7 @@ class Hotel {
     }
   }
 
-  getCustomerupcomingBookings(customerId) {
+  getCustomerUpcomingBookings(customerId) {
     const upcomingBookings = this.bookingsData.filter(booking => {
       return this.reformatDate(booking.date) > this.reformatDate(this.dateToday) && booking.userID === customerId 
     })
@@ -80,6 +80,19 @@ class Hotel {
     } else {
       return upcomingBookings
     }
+  }
+
+  getCustomerTotalSpent(customerId) {
+    return this.bookingsData.reduce((totalSpent, booking) => {
+      if (booking.userID === customerId) {
+        const room = this.roomsData.find(room => {
+          return room.number = booking.roomNumber
+        })
+        totalSpent += room.costPerNight
+      }
+      console.log(totalSpent)
+      return totalSpent
+    }, 0)
   }
 }
 

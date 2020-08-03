@@ -6,6 +6,7 @@ const domUpdates = {
   invalidAlert: document.querySelector(".invalid-alert"),
   loginPage: document.querySelector("#login-page"),
   managerDashboard: document.querySelector(".manager-dashboard"),
+  customerDashboard: document.querySelector(".customer-dashboard"),
 
   displayFullHeader(user) {
     this.userTitle.innerText = `${user}`;
@@ -77,17 +78,27 @@ const domUpdates = {
   //methods for customer dashboard
   displayCustomerDashboard(username, name) {
     this.displayFullHeader(`${username} | ${name}`)
-    this.managerDashboard.classList.remove('hide');
+    this.customerDashboard.classList.remove('hide');
   },
 
-  displayPastBookings() {
-
+  displayPastBookings(hotel, customerId) {
+    const pastCard = document.querySelector('.past-card');
+    const pastBookings = hotel.getCustomerPastBookings(customerId)
+    pastCard.innerHTML = `<h3 class="past">Past</h3>`;
+    pastBookings.forEach(pastBooking => {
+      pastCard.innerHTML += `<p>date: ${pastBooking.date} </p>
+      <p>roomNumber:</p>
+      <p>roomType:</p>
+      <p>bedSize</p>
+      <p>numBeds</p>
+      <p>costPerNight</p>`
+    })
   },
 
-  displayPastBookings() {
+  displayCurrentBookings() {
 
   },
-  displayPastBookings() {
+  displayUpcomingBookings() {
 
   },
 

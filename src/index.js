@@ -94,10 +94,11 @@ function clearForm() {
 }
 
 function loginCustomer(username, id) {
-  console.log(customersData.users)
   clearForm();
   domUpdates.resetLoginPage()
   customer = new Customer(username, customersData.users, id)
+  console.log(customer.id)
+  domUpdates.hideLoginPage();
   loadCustomerWelcomePage();
 }
 
@@ -111,9 +112,9 @@ function loginManager() {
 
 function loadCustomerWelcomePage() {
   domUpdates.displayCustomerDashboard(customer.username, customer.name);
-  domUpdates.displayPastBookings();
-  domUpdates.displayPastBookings();
-  domUpdates.displayPastBookings();
+  domUpdates.displayPastBookings(hotel, customer.id);
+  domUpdates.displayCurrentBookings();
+  domUpdates.displayUpcomingBookings();
   domUpdates.displayRewardPoints();
 }
 

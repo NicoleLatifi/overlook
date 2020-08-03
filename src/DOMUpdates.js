@@ -57,6 +57,11 @@ const domUpdates = {
   displayNumRoomsAvailableToday(hotel) {
     const numRoomsAvailable = document.querySelector('.num-rooms-available');
     numRoomsAvailable.innerText = `${hotel.getNumRoomsAvailableToday()}`;
+  },
+
+  displayRevenueToday(hotel) {
+    const totalRevenue = document.querySelector('.total-revenue');
+    totalRevenue.innerText = `$${hotel.getRevenueToday()}`;
   }
 }
 

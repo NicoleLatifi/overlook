@@ -110,5 +110,6 @@ function loginManager() {
 function loadManagerDashboard() {
   console.log(hotel)
   domUpdates.displayManagerDashboard();
-  domUpdates.displayNumRoomsAvailableToday(hotel);
+  domUpdates.displayNumRoomsAvailableToday(hotel)
+  domUpdates.displayRevenueToday(hotel);
 }

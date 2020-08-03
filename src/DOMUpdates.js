@@ -7,6 +7,7 @@ const domUpdates = {
   loginPage: document.querySelector("#login-page"),
   managerDashboard: document.querySelector(".manager-dashboard"),
   customerDashboard: document.querySelector(".customer-dashboard"),
+  rewardPoints: document.querySelector(".reward-points"),
 
   displayFullHeader(user) {
     this.userTitle.innerText = `${user}`;
@@ -77,8 +78,9 @@ const domUpdates = {
 
   //methods for customer dashboard
   displayCustomerDashboard(username, name) {
-    this.displayFullHeader(`${username} | ${name}`)
+    this.displayFullHeader(`${username} | ${name}`);
     this.customerDashboard.classList.remove('hide');
+    this.rewardPoints.classList.remove('hide');
   },
 
   displayPastBookings(hotel, customerId) {
@@ -119,7 +121,7 @@ const domUpdates = {
   
   displayUpcomingBookings(hotel, customerId) {
     const upcomingCard = document.querySelector('.upcoming-card');
-    const upcomingBookings = hotel.getCustomerupcomingBookings(customerId)
+    const upcomingBookings = hotel.getCustomerUpcomingBookings(customerId)
     upcomingCard.innerHTML = `<h3 class="upcoming">Upcoming</h3>`;
     if(typeof upcomingBookings === "string") {
       upcomingCard.innerHTML += `<p>${upcomingBookings}</p>`
@@ -135,10 +137,11 @@ const domUpdates = {
     }
   },
 
-  displayRewardPoints() {
-
+  displayRewardPoints(hotel, customerId) {
+    const rewardPointsValue = document.querySelector(".reward-points-value");
+    const totalSpent = hotel.getCustomerTotalSpent(customerId);
+    rewardPointsValue.innerText = `${Math.floor(totalSpent)}`;
   },
 }
-
 
 export default domUpdates;

@@ -114,7 +114,7 @@ function loadCustomerWelcomePage() {
   domUpdates.displayPastBookings(hotel, customer.id);
   domUpdates.displayCurrentBookings(hotel, customer.id);
   domUpdates.displayUpcomingBookings(hotel, customer.id);
-  domUpdates.displayRewardPoints();
+  domUpdates.displayRewardPoints(hotel, customer.id);
 }
 
 function loadManagerDashboard() {

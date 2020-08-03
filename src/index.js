@@ -1,14 +1,18 @@
 
 import './css/base.scss';
 import domUpdates from './domUpdates';
-import Hotel from './domUpdates';
+import Hotel from './Hotel';
 import Manager from './Manager';
+import moment from 'moment';
 
 const body = document.querySelector("body");
 const passwordInput = document.querySelector(".password-input");
 const usernameInput = document.querySelector(".username-input");
 
-let bookingsData = [];
+let bookingsData;
+let roomsData;
+let customersData;
+let dateToday = moment().format('YYYY/MM/DD');
 let customer;
 let hotel;
 let manager;
@@ -17,19 +21,33 @@ window.onload = getData();
 body.addEventListener("click", clickHandler);
 
 function getData() {
-  getBookingsData();
+  let bookings = getBookingsData();
+  let rooms = getRoomsData();
+  let customers = getCustomersData();
+  Promise.all([bookings, rooms, customers]).then((values) => {
+    bookingsData = values[0];
+    roomsData = values[1];
+    customersData = values[2];
+    hotel = new Hotel(bookingsData.bookings, roomsData.rooms, dateToday);
+  });
 }
 
 function getBookingsData() {
-  fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings")
-    .then(response => response.json())
-    .then(data => storeBookingsData(data))
-    .catch(error => console.log(error));
+  return fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings")
+  .then(response => response.json())
+  .catch(error => console.log(error));
 }
 
-function storeBookingsData(data){
-  bookingsData = data.bookings;
-  hotel = new Hotel(bookingsData);
+function getRoomsData() {
+  return fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms")
+  .then(response => response.json())
+  .catch(error => console.log(error));
+}
+
+function getCustomersData() {
+  return fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users")
+  .then(response => response.json())
+  .catch(error => console.log(error));
 }
 
 function clickHandler() {
@@ -38,8 +56,6 @@ function clickHandler() {
     determineValidInput();
   }
 }
-
-//maybe break into determineValidInput and determineUser functions
 
 function determineValidInput() {
   if (usernameInput.value.length === 0) {

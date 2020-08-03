@@ -85,21 +85,54 @@ const domUpdates = {
     const pastCard = document.querySelector('.past-card');
     const pastBookings = hotel.getCustomerPastBookings(customerId)
     pastCard.innerHTML = `<h3 class="past">Past</h3>`;
-    pastBookings.forEach(pastBooking => {
-      pastCard.innerHTML += `<p class="booking-top">date: ${pastBooking.date} </p>
-      <p>roomNumber: ${pastBooking.roomNumber}</p>
-      <p>roomType: ${pastBooking.roomType}</p>
-      <p>bedSize: ${pastBooking.bedSize}</p>
-      <p>numBeds: ${pastBooking.numBeds}</p>
-      <p class="booking-bottom">costPerNight: ${pastBooking.costPerNight}</p>`
-    })
+    if(typeof pastBookings === "string") {
+      pastCard.innerHTML += `<p>${pastBookings}</p>`
+    } else {
+      pastBookings.forEach(pastBooking => {
+        pastCard.innerHTML += `<p class="booking-top">date: ${pastBooking.date} </p>
+        <p>roomNumber: ${pastBooking.roomNumber}</p>
+        <p>roomType: ${pastBooking.roomType}</p>
+        <p>bedSize: ${pastBooking.bedSize}</p>
+        <p>numBeds: ${pastBooking.numBeds}</p>
+        <p class="booking-bottom">costPerNight: ${pastBooking.costPerNight}</p>`
+      })
+    }
   },
 
-  displayCurrentBookings() {
-
+  displayCurrentBookings(hotel, customerId) {
+    const currentCard = document.querySelector('.current-card');
+    const currentBookings = hotel.getCustomerCurrentBookings(customerId)
+    currentCard.innerHTML = `<h3 class="current">Current</h3>`;
+    if(typeof currentBookings === "string") {
+      currentCard.innerHTML += `<p>${currentBookings}</p>`
+    } else {
+      currentBookings.forEach(currentBooking => {
+        currentCard.innerHTML += `<p class="booking-top">date: ${currentBooking.date} </p>
+        <p>roomNumber: ${currentBooking.roomNumber}</p>
+        <p>roomType: ${currentBooking.roomType}</p>
+        <p>bedSize: ${currentBooking.bedSize}</p>
+        <p>numBeds: ${currentBooking.numBeds}</p>
+        <p class="booking-bottom">costPerNight: ${currentBooking.costPerNight}</p>`
+      })
+    }
   },
-  displayUpcomingBookings() {
-
+  
+  displayUpcomingBookings(hotel, customerId) {
+    const upcomingCard = document.querySelector('.upcoming-card');
+    const upcomingBookings = hotel.getCustomerupcomingBookings(customerId)
+    upcomingCard.innerHTML = `<h3 class="upcoming">Upcoming</h3>`;
+    if(typeof upcomingBookings === "string") {
+      upcomingCard.innerHTML += `<p>${upcomingBookings}</p>`
+    } else {
+      upcomingBookings.forEach(upcomingBooking => {
+        upcomingCard.innerHTML += `<p class="booking-top">date: ${upcomingBooking.date} </p>
+        <p>roomNumber: ${upcomingBooking.roomNumber}</p>
+        <p>roomType: ${upcomingBooking.roomType}</p>
+        <p>bedSize: ${upcomingBooking.bedSize}</p>
+        <p>numBeds: ${upcomingBooking.numBeds}</p>
+        <p class="booking-bottom">costPerNight: ${upcomingBooking.costPerNight}</p>`
+      })
+    }
   },
 
   displayRewardPoints() {

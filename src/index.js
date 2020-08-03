@@ -1,35 +1,62 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
 
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
-
-console.log('This is the JavaScript entry file - your code begins here.');
-
-
 import domUpdates from './domUpdates';
+import Hotel from './Hotel';
+import Manager from './Manager';
+import moment from 'moment';
 
 const body = document.querySelector("body");
-const usernameInput = document.querySelector(".username-input");
 const passwordInput = document.querySelector(".password-input");
+const usernameInput = document.querySelector(".username-input");
 
+let bookingsData;
+let roomsData;
+let customersData;
+let dateToday = moment().format('YYYY/MM/DD');
 let customer;
+let hotel;
 let manager;
 
-window.onload = domUpdates.resetLoginPage();
+window.onload = getData();
 body.addEventListener("click", clickHandler);
+
+function getData() {
+  let bookings = getBookingsData();
+  let rooms = getRoomsData();
+  let customers = getCustomersData();
+  Promise.all([bookings, rooms, customers]).then((values) => {
+    bookingsData = values[0];
+    roomsData = values[1];
+    customersData = values[2];
+    hotel = new Hotel(bookingsData.bookings, roomsData.rooms, dateToday);
+  });
+}
+
+function getBookingsData() {
+  return fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings")
+  .then(response => response.json())
+  .catch(error => console.log(error));
+}
+
+function getRoomsData() {
+  return fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms")
+  .then(response => response.json())
+  .catch(error => console.log(error));
+}
+
+function getCustomersData() {
+  return fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users")
+  .then(response => response.json())
+  .catch(error => console.log(error));
+}
 
 function clickHandler() {
   if (event.target.classList.contains("submit")) {
     event.preventDefault();
     determineValidInput();
+    console.log(hotel);
   }
 }
-
-//maybe break into determineValidInput and determineUser functions
 
 function determineValidInput() {
   if (usernameInput.value.length === 0) {
@@ -54,7 +81,7 @@ function determineUser() {
   if (usernameInputRoot === "customer" && inputId >= 1 && inputId <= 50) {
     loginCustomer(usernameInputRoot);
   } else if (usernameInputRoot === "manager") {
-    loginManager(name);
+    loginManager();
   } else {
     domUpdates.alertMessage("invalid username");
     usernameInput.value = ''
@@ -72,8 +99,19 @@ function loginCustomer(name) {
   console.log(name)
 }
 
-function loginManager(name) {
+function loginManager() {
   clearForm();
-  domUpdates.resetLoginPage()
-  console.log(name)
+  domUpdates.resetLoginPage();
+  manager = new Manager(bookingsData);
+  domUpdates.hideLoginPage();
+  loadManagerDashboard();
+}
+
+function loadManagerDashboard() {
+  console.log(hotel)
+  domUpdates.displayManagerDashboard();
+  domUpdates.displayDateToday(dateToday);
+  domUpdates.displayNumRoomsAvailableToday(hotel)
+  domUpdates.displayRevenueToday(hotel);
+  domUpdates.displayOccupancyRate(hotel);
 }

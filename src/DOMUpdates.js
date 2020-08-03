@@ -86,12 +86,12 @@ const domUpdates = {
     const pastBookings = hotel.getCustomerPastBookings(customerId)
     pastCard.innerHTML = `<h3 class="past">Past</h3>`;
     pastBookings.forEach(pastBooking => {
-      pastCard.innerHTML += `<p>date: ${pastBooking.date} </p>
-      <p>roomNumber:</p>
-      <p>roomType:</p>
-      <p>bedSize</p>
-      <p>numBeds</p>
-      <p>costPerNight</p>`
+      pastCard.innerHTML += `<p class="booking-top">date: ${pastBooking.date} </p>
+      <p>roomNumber: ${pastBooking.roomNumber}</p>
+      <p>roomType: ${pastBooking.roomType}</p>
+      <p>bedSize: ${pastBooking.bedSize}</p>
+      <p>numBeds: ${pastBooking.numBeds}</p>
+      <p class="booking-bottom">costPerNight: ${pastBooking.costPerNight}</p>`
     })
   },
 

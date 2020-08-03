@@ -76,9 +76,9 @@ describe('Hotel', function() {
     expect(revenueToday).to.equal(835.78);
   })
 
-  // it('Should calculate today\s occupancy rate', function() {
-  //   let occupancyRateToday = hotel.getOccupancyRateToday();
+  it('Should calculate today\s occupancy rate', function() {
+    let occupancyRateToday = hotel.getOccupancyRateToday();
 
-  //   expect(occupancyRateToday).to.equal(67);
-  // })
+    expect(occupancyRateToday).to.equal(67);
+  })
 })

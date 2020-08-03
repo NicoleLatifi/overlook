@@ -30,7 +30,15 @@ class Hotel {
   }
 
   getOccupancyRateToday() {
-
+    const numOfRooms = this.roomsData.length;
+    const numRoomsBooked = this.bookingsData.reduce((roomCount, booking) => {
+      if (booking.date === this.dateToday) {
+        roomCount++;
+      }
+      return roomCount;
+    }, 0)
+    const occupancyRate = Math.round(numRoomsBooked / numOfRooms * 100);
+    return occupancyRate;
   }
 }
 

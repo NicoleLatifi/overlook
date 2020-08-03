@@ -25,7 +25,7 @@ class Hotel {
         });
         revenue += roomFound.costPerNight;
       }
-      return revenue
+      return Math.floor(revenue);
     }, 0)
   }
 

@@ -73,7 +73,7 @@ describe('Hotel', function() {
   it('Should calculate today\'s revenue', function() {
     let revenueToday = hotel.getRevenueToday();
 
-    expect(revenueToday).to.equal(835.78);
+    expect(revenueToday).to.equal(835);
   })
 
   it('Should calculate today\s occupancy rate', function() {

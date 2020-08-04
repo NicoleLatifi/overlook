@@ -10,9 +10,9 @@
       <h1>overlook</h1>
       <h2 class="user-title hide">customer1</h2>
       <nav class="hide">
-        <button>Bookings</button>
-        <button>Book A Room</button>
-        <button>Logout</button>
+        <button class="bookings">Bookings</button>
+        <button class="book-a-room">Book A Room</button>
+        <button class="logout">Logout</button>
       </nav>
     </header>
     <section id="login-page">
@@ -82,32 +82,22 @@
         <p class="booking-bottom">costPerNight</p>
       </div>
     </section>
-    
-    <section id="customer-book-room-page" class="hide">
+    <section class="book-room-page hide">
       <article class="select-date-container">
-        <label class="" for="date-input">Select date:<label>
-          <input type="date" class="" placeholder="mm/dd/yyyy">
-          <button type="button" aria-label='Search date'>search</button>
-        </article>
-      </section>
+        <label class="select-date" for="date-input">Select A Date:</label>
+        <input type="date" class="date-selector" placeholder="mm/dd/yyyy">
+        <button type="button" class="search-date" aria-label='Search date'>Search</button>
+      </article>
+      <div class="available-room hide">
+        <p>date: </p>
+        <p>roomNumber:</p>
+        <p>roomType:</p>
+        <p>bedSize</p>
+        <p>numBeds</p>
+        <p>costPerNight</p>
+      </div>
+    </section>
       
-      <section class="customer-bookings-page hide">
-        <h4>Upcoming</h4>
-        <div class="booking-container">
-          <p>Booking info</p>
-          <p>Room info</p>
-        </div>
-        <h4>Current</h4>
-        <div class="booking-container">
-          <p>Booking info</p>
-          <p>Room info</p>
-        </div>
-        <h4>Past</h4>
-        <div class="booking-container">
-          <p>Booking info</p>
-          <p>Room info</p>
-        </div>
-      </section>
       <p class="reward-points hide">You’ve earned <span class="reward-points-value">150</span> reward points!</p>
 
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->

@@ -121,4 +121,17 @@ describe('Hotel', function() {
 
     expect(totalSpent).to.equal(358.4);
   })
+
+  it('Should be able to filter rooms available by date', function() {
+    let roomsAvailable = hotel.filterRoomsAvailableByDate("2020/02/11");
+
+    expect(roomsAvailable).to.deep.equal([{
+      "number": 1,
+      "roomType": "residential suite",
+      "bidet": true,
+      "bedSize": "queen",
+      "numBeds": 1,
+      "costPerNight": 358.4
+      }]);
+  })
 })

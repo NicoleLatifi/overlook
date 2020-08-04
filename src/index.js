@@ -54,7 +54,19 @@ function getCustomersData() {
 function clickHandler() {
   if (event.target.classList.contains("submit")) {
     event.preventDefault();
-    determineValidInput();;
+    determineValidInput();
+  }
+  if (event.target.classList.contains("book-a-room")) {
+    loadBookRoomPage();
+  }
+  if (event.target.classList.contains("bookings")) {
+    loadCustomerWelcomePage();
+  }
+  if (event.target.classList.contains("search-date")) {
+    determineSearchDate();
+  }
+  if (event.target.classList.contains("book-room")) {
+    determineRoomToBook();
   }
 }
 
@@ -105,11 +117,14 @@ function loginManager() {
   clearForm();
   domUpdates.resetLoginPage();
   manager = new Manager(bookingsData);
+  // console.log("deleting booking now!")
+  // manager.deleteBooking()
   domUpdates.hideLoginPage();
   loadManagerDashboard();
 }
 
 function loadCustomerWelcomePage() {
+  console.log(customer.id)
   domUpdates.displayCustomerDashboard(customer.username, customer.name);
   domUpdates.displayPastBookings(hotel, customer.id);
   domUpdates.displayCurrentBookings(hotel, customer.id);
@@ -123,4 +138,34 @@ function loadManagerDashboard() {
   domUpdates.displayNumRoomsAvailableToday(hotel)
   domUpdates.displayRevenueToday(hotel);
   domUpdates.displayOccupancyRate(hotel);
+}
+
+function loadBookRoomPage() {
+  domUpdates.hideCustomerDashboard();
+  domUpdates.displayBookRoomPage();
+}
+
+function determineSearchDate() {
+  const searchDateInput = document.querySelector(".date-selector");
+  loadAvailableRoomsPage(searchDateInput.value);
+  console.log(searchDateInput.value)
+}
+
+function loadAvailableRoomsPage(date) {
+  console.log(date)
+  domUpdates.hideSelectDate();
+  domUpdates.displayAvailableRooms(hotel, date);
+}
+
+function determineRoomToBook() {
+  let date = document.querySelector('[data-date]').dataset.date; // YYYY-MM-DD
+  const dateReformatted = hotel.reformatDate(date); // YYYYMMDD
+  date = hotel.undoReformatDate(dateReformatted); // YYYY/MM/DD
+  hotel.roomsData.find(room => {
+    if (event.target.classList.contains(room.number)) {
+      customer.addBooking(date, room.number);
+      alert("You've booked a room!")
+    }
+  })
+  getData();
 }

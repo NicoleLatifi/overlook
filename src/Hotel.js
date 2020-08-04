@@ -41,19 +41,27 @@ class Hotel {
     return occupancyRate;
   }
 
-  reformatDate(date) {
+  reformatDate(date) { // YYYY/MM/DD or YYYY-MM-DD to YYYYMMDD
     const yyyy = date.substring(0, 4);
     const mm = date.substring(5, 7);
     const dd = date.substring(8);
     const reformattedDate = yyyy + mm + dd;
     return reformattedDate;
   }
+
+  undoReformatDate(date) { // YYYYMMDD to YYYY/MM/DD
+    const yyyy = date.substring(0, 4);
+    const mm = date.substring(4, 6);
+    const dd = date.substring(6);
+    const reformattedDate = yyyy + "/" + mm + "/" + dd;
+    return reformattedDate;
+  }
   
-    getRoomDetails(booking) {
-      return this.roomsData.find(room => {
-        return room.number === booking.roomNumber
-      })
-    }
+  getRoomDetails(booking) {
+    return this.roomsData.find(room => {
+      return room.number === booking.roomNumber
+    })
+  }
 
   getCustomerPastBookings(customerId) {
     const pastBookings = this.bookingsData.filter(booking => {

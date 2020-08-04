@@ -99,6 +99,23 @@ class Hotel {
       return totalSpent
     }, 0)
   }
+
+  filterRoomsAvailableByDate(date) {
+    let roomNumsBooked = [];
+    let roomsAvailable = [];
+    this.bookingsData.forEach(booking => {
+      if(booking.date === date) {
+        roomNumsBooked.push(booking.roomNumber)
+      }
+    });
+    this.roomsData.forEach(room => {
+      const roomFound = roomNumsBooked.some(roomNum => {return roomNum === room.number})
+      if(!roomFound) {
+        roomsAvailable.push(room);
+      }
+    })
+    return roomsAvailable;
+  }
 }
 
 export default Hotel;

@@ -59,11 +59,13 @@ function clickHandler() {
   if (event.target.classList.contains("book-a-room")) {
     loadBookRoomPage();
   }
+  if (event.target.classList.contains("bookings")) {
+    loadCustomerWelcomePage();
+  }
   if (event.target.classList.contains("search-date")) {
     determineSearchDate();
-    // loadAvailableRoomsPage();
   }
-  if (event.target.classList.contains("book-room")) { // just doing this to test post function
+  if (event.target.classList.contains("book-room")) {
     determineRoomToBook();
   }
 }
@@ -122,6 +124,7 @@ function loginManager() {
 }
 
 function loadCustomerWelcomePage() {
+  console.log(customer.id)
   domUpdates.displayCustomerDashboard(customer.username, customer.name);
   domUpdates.displayPastBookings(hotel, customer.id);
   domUpdates.displayCurrentBookings(hotel, customer.id);
@@ -144,10 +147,8 @@ function loadBookRoomPage() {
 
 function determineSearchDate() {
   const searchDateInput = document.querySelector(".date-selector");
-  // const searchDateReformatted = hotel.reformatDate(searchDateInput.value);
   loadAvailableRoomsPage(searchDateInput.value);
   console.log(searchDateInput.value)
-  // console.log(searchDateReformatted)
 }
 
 function loadAvailableRoomsPage(date) {
@@ -157,14 +158,14 @@ function loadAvailableRoomsPage(date) {
 }
 
 function determineRoomToBook() {
-  let date = document.querySelector('[data-date]').dataset.date
-  console.log(`*** ${date}`) // YYYY-MM-DD
-  const dateReformatted = hotel.reformatDate(date)
-  date = hotel.undoReformatDate(dateReformatted)
-  console.log(`***** ${date}`)
+  let date = document.querySelector('[data-date]').dataset.date; // YYYY-MM-DD
+  const dateReformatted = hotel.reformatDate(date); // YYYYMMDD
+  date = hotel.undoReformatDate(dateReformatted); // YYYY/MM/DD
   hotel.roomsData.find(room => {
     if (event.target.classList.contains(room.number)) {
       customer.addBooking(date, room.number);
+      alert("You've booked a room!")
     }
   })
+  getData();
 }

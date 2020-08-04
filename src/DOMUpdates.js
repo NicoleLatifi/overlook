@@ -94,6 +94,7 @@ const domUpdates = {
   },
 
   displayPastBookings(hotel, customerId) {
+    // debugger
     const pastCard = document.querySelector('.past-card');
     const pastBookings = hotel.getCustomerPastBookings(customerId)
     pastCard.innerHTML = `<h3 class="past">Past</h3>`;
@@ -101,14 +102,14 @@ const domUpdates = {
       pastCard.innerHTML += `<p>${pastBookings}</p>`
     } else {
       pastBookings.forEach(pastBooking => {
-        const roomDetails = hotel.getRoomDetails(pastBooking);
+        // const roomDetails = hotel.getRoomDetails(pastBooking);
         pastCard.innerHTML += `<p class="booking-top">Date: ${pastBooking.date} </p>
-        <p>Room Number: ${pastBooking.roomNumber}</p>
-        <p>Type: ${roomDetails.roomType}</p>
-        <p>Bed Size: ${roomDetails.bedSize}</p>
-        <p>Number of Beds: ${roomDetails.numBeds}</p>
-        <p class="booking-bottom">Rate: $${roomDetails.costPerNight}/night</p>`
+        <p class="booking-bottom">Room Number: ${pastBooking.roomNumber}</p>`
       })
+      // <p>Type: ${roomDetails.roomType}</p>
+      // <p>Bed Size: ${roomDetails.bedSize}</p>
+      // <p>Number of Beds: ${roomDetails.numBeds}</p>
+      // <p class="booking-bottom">Rate: $${roomDetails.costPerNight}/night</p> // This caused problems when clicking Bookings button, don't know why
     }
   },
 
@@ -120,12 +121,8 @@ const domUpdates = {
       currentCard.innerHTML += `<p>${currentBookings}</p>`
     } else {
       currentBookings.forEach(currentBooking => {
-        currentCard.innerHTML += `<p class="booking-top">date: ${currentBooking.date} </p>
-        <p>roomNumber: ${currentBooking.roomNumber}</p>
-        <p>roomType: ${currentBooking.roomType}</p>
-        <p>bedSize: ${currentBooking.bedSize}</p>
-        <p>numBeds: ${currentBooking.numBeds}</p>
-        <p class="booking-bottom">costPerNight: ${currentBooking.costPerNight}</p>`
+        currentCard.innerHTML += `<p class="booking-top">Date: ${currentBooking.date} </p>
+        <p class="booking-bottom">Room Number: ${currentBooking.roomNumber}</p>`
       })
     }
   },
@@ -138,12 +135,8 @@ const domUpdates = {
       upcomingCard.innerHTML += `<p>${upcomingBookings}</p>`
     } else {
       upcomingBookings.forEach(upcomingBooking => {
-        upcomingCard.innerHTML += `<p class="booking-top">date: ${upcomingBooking.date} </p>
-        <p>roomNumber: ${upcomingBooking.roomNumber}</p>
-        <p>roomType: ${upcomingBooking.roomType}</p>
-        <p>bedSize: ${upcomingBooking.bedSize}</p>
-        <p>numBeds: ${upcomingBooking.numBeds}</p>
-        <p class="booking-bottom">costPerNight: ${upcomingBooking.costPerNight}</p>`
+        upcomingCard.innerHTML += `<p class="booking-top">Date: ${upcomingBooking.date} </p>
+        <p class="booking-bottom">Room Number: ${upcomingBooking.roomNumber}</p>`
       })
     }
   },

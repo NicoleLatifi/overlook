@@ -24,4 +24,18 @@ describe('domUpdates', function() {
     expect(domUpdates.querySelector).to.have.been.called(1);
     expect(domUpdates.querySelector).to.have.been.called.with(".user-title");
   })
+
+  it('Should modify the date', function() {
+    domUpdates.displayDateToday(dateToday);
+
+    expect(domUpdates.querySelector).to.have.been.called(1);
+    expect(domUpdates.querySelector).to.have.been.called.with(".today");
+  })
+
+  it('Should modify the occupancy rate', function() {
+    domUpdates.displayOccupancyRate(hotel);
+
+    expect(domUpdates.querySelector).to.have.been.called(1);
+    expect(domUpdates.querySelector).to.have.been.called.with(".occupancy-rate");
+  })
 })

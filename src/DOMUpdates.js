@@ -161,10 +161,10 @@ const domUpdates = {
   },
 
   displayAvailableRooms(hotel, date) {
+    console.log(`DATE: ${date}`);
     const roomsAvailable = hotel.filterRoomsAvailableByDate(date);
-    console.log(roomsAvailable)
     const availableRoom = document.querySelector(".available-room");
-    availableRoom.innerHTML = ``;
+    availableRoom.innerHTML = `<h3>Rooms Available ${date}</h3>`;
     availableRoom.classList.remove("hide");
     if(roomsAvailable.length === 0) {
       availableRoom.innerHTML += `<p>No rooms available for this date. Kindly select another date.</p>`
@@ -175,7 +175,7 @@ const domUpdates = {
         <p>Bed Size: ${room.bedSize}</p>
         <p>Number of Beds: ${room.numBeds}</p>
         <p>Rate: $${room.costPerNight}/night</p>
-        <button class="book-room-${room.number} booking-bottom" type="button">Book Room</button>`
+        <button class="book-room booking-bottom ${room.number}" data-date="${date}" type="button">Book Room</button>`
       })
     }
   }

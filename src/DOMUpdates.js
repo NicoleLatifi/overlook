@@ -8,6 +8,16 @@ const domUpdates = {
   managerDashboard: document.querySelector(".manager-dashboard"),
   customerDashboard: document.querySelector(".customer-dashboard"),
   rewardPoints: document.querySelector(".reward-points"),
+  bookRoomPage: document.querySelector(".book-room-page"),
+
+// hide pages
+  hideLoginPage() {
+    this.loginPage.classList.add('hide');
+  },
+
+  hideCustomerDashboard() {
+    this.customerDashboard.classList.add('hide');
+  },
 
   displayFullHeader(user) {
     this.userTitle.innerText = `${user}`;
@@ -22,10 +32,6 @@ const domUpdates = {
     this.usernameAlert.classList.add('hide');
     this.passwordAlert.classList.add('hide');
     this.invalidAlert.classList.add('hide')
-  },
-
-  hideLoginPage() {
-    this.loginPage.classList.add('hide')
   },
 
   addUsernameRequiredAlert() {
@@ -45,7 +51,6 @@ const domUpdates = {
   },
 
   alertMessage(message) {
-    console.log(message)
     this.invalidAlert.classList.remove('hide')
     this.invalidAlert.innerText = `${message}, please try again`;
   },
@@ -143,6 +148,12 @@ const domUpdates = {
     const totalSpent = hotel.getCustomerTotalSpent(customerId);
     rewardPointsValue.innerText = `${Math.floor(totalSpent)}`;
   },
+
+  //methods for book room page
+  displayBookRoomPage() {
+    this.bookRoomPage.classList.remove("hide");
+    //add if manager display delete button
+  }
 }
 
 export default domUpdates;

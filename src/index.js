@@ -56,6 +56,9 @@ function clickHandler() {
     event.preventDefault();
     determineValidInput();;
   }
+  if (event.target.classList.contains("book-a-room")) {
+    loadBookRoomPage();
+  }
 }
 
 function determineValidInput() {
@@ -123,4 +126,9 @@ function loadManagerDashboard() {
   domUpdates.displayNumRoomsAvailableToday(hotel)
   domUpdates.displayRevenueToday(hotel);
   domUpdates.displayOccupancyRate(hotel);
+}
+
+function loadBookRoomPage() {
+  domUpdates.hideCustomerDashboard();
+  domUpdates.displayBookRoomPage();
 }

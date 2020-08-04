@@ -1,0 +1,58 @@
+.customer-dashboard {
+  display: grid;
+  grid-row: 1;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.booking-card {
+  @extend .dashboard-card;
+  padding-bottom: 0;
+}
+
+.past {
+  font-size: 2em;
+  grid-area: 1 / 1 / 2 / 2;
+  padding: 16px;
+  width: 200px;
+}
+
+.current {
+  font-size: 2em;
+  grid-area: 1 / 2 / 2 / 3;
+  padding: 16px;
+  width: 200px;
+}
+
+.upcoming {
+  font-size: 2em;
+  grid-area: 1 / 3 / 2 / 4;
+  padding: 16px;
+  width: 200px;
+}
+
+.past-card {
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+.current-card {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.upcoming-card {
+  grid-area: 2 / 3 / 3 / 4;
+}
+
+.booking-top {
+  margin-top: 8px;
+}
+
+.booking-bottom {
+  margin-bottom: 48px;
+}
+
+.reward-points {
+  color: $overlook-gray;
+  font-size: 24px;
+  text-align: center;
+  padding-bottom: 32px;
+}

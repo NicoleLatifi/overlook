@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  font-family: $main-font;
+  max-width: 1000px;
+  margin: auto;
+}
+
+body {
+  background: $main-background;
+}
+
+h4 {
+  font-size: 24px;
+  text-align: center;
+}
+
+h5 {
+  color: $accent-green;
+  font-size: 48px;
+  text-align: center;
+  margin-top: 24px;
+}

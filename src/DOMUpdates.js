@@ -9,6 +9,7 @@ const domUpdates = {
   customerDashboard: document.querySelector(".customer-dashboard"),
   rewardPoints: document.querySelector(".reward-points"),
   bookRoomPage: document.querySelector(".book-room-page"),
+  selectDate: document.querySelector(".select-date-container"),
 
 // hide pages
   hideLoginPage() {
@@ -17,6 +18,10 @@ const domUpdates = {
 
   hideCustomerDashboard() {
     this.customerDashboard.classList.add('hide');
+  },
+
+  hideSelectDate() {
+    this.selectDate.classList.add("hide");
   },
 
   displayFullHeader(user) {
@@ -153,6 +158,26 @@ const domUpdates = {
   displayBookRoomPage() {
     this.bookRoomPage.classList.remove("hide");
     //add if manager display delete button
+  },
+
+  displayAvailableRooms(hotel, date) {
+    const roomsAvailable = hotel.filterRoomsAvailableByDate(date);
+    console.log(roomsAvailable)
+    const availableRoom = document.querySelector(".available-room");
+    availableRoom.innerHTML = ``;
+    availableRoom.classList.remove("hide");
+    if(roomsAvailable.length === 0) {
+      availableRoom.innerHTML += `<p>No rooms available for this date. Kindly select another date.</p>`
+    } else {
+      roomsAvailable.forEach(room => {
+        availableRoom.innerHTML += `<p class="booking-top">Room Number: ${room.number}</p>
+        <p>Type: ${room.roomType}</p>
+        <p>Bed Size: ${room.bedSize}</p>
+        <p>Number of Beds: ${room.numBeds}</p>
+        <p>Rate: $${room.costPerNight}/night</p>
+        <button class="book-room-${room.number} booking-bottom" type="button">Book Room</button>`
+      })
+    }
   }
 }
 

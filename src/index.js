@@ -59,6 +59,10 @@ function clickHandler() {
   if (event.target.classList.contains("book-a-room")) {
     loadBookRoomPage();
   }
+  if (event.target.classList.contains("search-date")) {
+    determineSearchDate();
+    loadAvailableRoomsPage();
+  }
 }
 
 function determineValidInput() {
@@ -131,4 +135,15 @@ function loadManagerDashboard() {
 function loadBookRoomPage() {
   domUpdates.hideCustomerDashboard();
   domUpdates.displayBookRoomPage();
+}
+
+function determineSearchDate() {
+  const searchDateInput = document.querySelector(".date-selector")
+  loadAvailableRoomsPage(searchDateInput.value);
+  console.log(searchDateInput.value)
+}
+
+function loadAvailableRoomsPage(date) {
+  domUpdates.hideSelectDate();
+  domUpdates.displayAvailableRooms(hotel, date);
 }

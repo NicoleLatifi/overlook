@@ -9,6 +9,7 @@ import moment from 'moment';
 const body = document.querySelector("body");
 const passwordInput = document.querySelector(".password-input");
 const usernameInput = document.querySelector(".username-input");
+const searchInput = document.querySelector(".search-input")
 
 let bookingsData;
 let roomsData;
@@ -68,6 +69,9 @@ function clickHandler() {
   if (event.target.classList.contains("book-room")) {
     determineRoomToBook();
   }
+  if (event.target.classList.contains("go")) {
+    determineCustomer();
+  }
 }
 
 function determineValidInput() {
@@ -116,20 +120,11 @@ function loginCustomer(username, id) {
 function loginManager() {
   clearForm();
   domUpdates.resetLoginPage();
-  manager = new Manager(bookingsData);
+  manager = new Manager(customersData.users);
   // console.log("deleting booking now!")
   // manager.deleteBooking()
   domUpdates.hideLoginPage();
   loadManagerDashboard();
-}
-
-function loadCustomerWelcomePage() {
-  console.log(customer.id)
-  domUpdates.displayCustomerDashboard(customer.username, customer.name);
-  domUpdates.displayPastBookings(hotel, customer.id);
-  domUpdates.displayCurrentBookings(hotel, customer.id);
-  domUpdates.displayUpcomingBookings(hotel, customer.id);
-  domUpdates.displayRewardPoints(hotel, customer.id);
 }
 
 function loadManagerDashboard() {
@@ -138,6 +133,21 @@ function loadManagerDashboard() {
   domUpdates.displayNumRoomsAvailableToday(hotel)
   domUpdates.displayRevenueToday(hotel);
   domUpdates.displayOccupancyRate(hotel);
+}
+
+function determineCustomer() {
+  const foundCustomerId = manager.getCustomerIdByName(searchInput.value);
+  const foundCustomerName = manager.getCustomerNameById(foundCustomerId);
+  domUpdates.hideManagerDashboard();
+  domUpdates.displaySearchForCustomerResults(hotel, foundCustomerId, foundCustomerName);
+}
+
+function loadCustomerWelcomePage() {
+  domUpdates.displayCustomerDashboard(customer.username, customer.name);
+  domUpdates.displayPastBookings(hotel, customer.id);
+  domUpdates.displayCurrentBookings(hotel, customer.id);
+  domUpdates.displayUpcomingBookings(hotel, customer.id);
+  domUpdates.displayRewardPoints(hotel, customer.id);
 }
 
 function loadBookRoomPage() {

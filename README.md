@@ -12,13 +12,13 @@ This project, is a hotel management tool for hotel customers and staff to manage
 
 ### View the app in action!
 
-To login as a admin, enter the username "manager" and password "overlook2020" and click submit. A dashboard is displayed that shows today's number of rooms available,total revenue, and occupancy rate.
+To login as a admin, enter the username "manager" and password "overlook2020" and click submit. A dashboard is displayed that shows today's number of rooms available,total revenue, and occupancy rate. The manager can search by partial customer name to view the customer's total amount spent.
 
-<img src="http://g.recordit.co/HFACer1eXi.gif" alt="Login as manager and dashboard is displayed" height=auto width=75%/>
+<img src="http://g.recordit.co/ux2h7LFMG1.gif" alt="Login as manager and dashboard is displayed" height=auto width=75%/>
 
 To login as a customer, the username is "customer" and then the customer's id number. In example, enter the username "customer20" and the password "overlook2020" and click submit. A dashboard is displayed that shows the customer's past, current, and upcoming bookings. The customer's reward points, which is the same as their total dollar amount spent, displays at the bottom. A customer can also select a date to see available rooms that can be booked.
 
-<img src="http://g.recordit.co/BjWjfUineb.gif" alt="Login as manager and dashboard is displayed" height=auto width=75%/>
+<img src="http://g.recordit.co/BjWjfUineb.gif" alt="Login as customer and dashboard is displayed" height=auto width=75%/>
 
 ### Setup/Install
 

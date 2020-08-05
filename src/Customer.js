@@ -2,9 +2,9 @@ import User from './User';
 
 class Customer extends User {
   constructor(username, customersData, id) {
-    super(username)
+    super(username, customersData)
     this.id = id;
-    this.customersData = customersData;
+    // this.customersData = customersData;
     this.name = this.getName();
   }
 

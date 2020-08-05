@@ -1,10 +1,9 @@
 // import AllCustomers from '../src/AllCustomers';
 
 class User {
-  constructor(username) {
-    // this.username = username;
-    // this.allCustomers = allCustomers;
+  constructor(username, customersData) {
     this.username = username;
+    this.customersData = customersData
   }
 
   //This works in customer, can it go here?

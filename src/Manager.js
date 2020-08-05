@@ -1,8 +1,27 @@
 import User from './User';
 
 class Manager extends User {
-  constructor() {
-    super("manager")
+  constructor(customersData) {
+    super("manager", customersData);
+  }
+
+  getCustomerIdByName(name) {
+    const foundCustomer = this.customersData.find(customer => {
+      return customer.name.includes(name)
+    })
+    if (foundCustomer === undefined) {
+      return `No customer found with the name ${name}. Please try again.`
+    } else {
+      console.log(foundCustomer.id)
+      return foundCustomer.id
+    }
+  }
+
+  getCustomerNameById(customerId) {
+    const foundCustomer = this.customersData.find(customer => {
+      return customerId === customer.id;
+    });
+    return foundCustomer.name;
   }
 
   deleteBooking() {

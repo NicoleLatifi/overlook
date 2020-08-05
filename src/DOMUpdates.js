@@ -16,6 +16,10 @@ const domUpdates = {
     this.loginPage.classList.add('hide');
   },
 
+  hideManagerDashboard() {
+    this.managerDashboard.classList.add('hide');
+  },
+
   hideCustomerDashboard() {
     this.customerDashboard.classList.add('hide');
   },
@@ -84,6 +88,14 @@ const domUpdates = {
   displayOccupancyRate(hotel) {
     const occupancyRate = document.querySelector('.occupancy-rate');
     occupancyRate.innerText = `${hotel.getOccupancyRateToday()}%`;
+  },
+
+  displaySearchForCustomerResults(hotel, customerId, customerName) {
+    const managerBookRoom = document.querySelector('.manager-book-room-page')
+    const totalSpent = hotel.getCustomerTotalSpent(customerId);
+    managerBookRoom.classList.remove('hide')
+    managerBookRoom.innerHTML = `<h4>Customer Name: ${customerName}</h4>
+    <h4>Total Spent: $${totalSpent.toFixed(2)}</h4>`
   },
 
   //methods for customer dashboard

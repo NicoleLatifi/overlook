@@ -1,105 +1,50 @@
-# Webpack Starter Kit
+# Overlook
+#### Mod-2 Solo Project by [Nicole Latifi](GitHub.com/NicoleLatifi)
 
-## Clone This Repo
+This project, is a hotel management tool for hotel customers and staff to manage room bookings.
 
-That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
+### Learning Goals
 
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
+* Use OOP to drive the design of the application and the code
+* Work with an API to send and receive data
+* Solidify the code review process
+* Create a robust test suite that thoroughly tests all functionality of a client-side application
 
-Now try to commit something and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
+### View the app in action!
 
-## Setup
+To login as a admin, enter the username "manager" and password "overlook2020" and click submit. A dashboard is displayed that shows today's number of rooms available,total revenue, and occupancy rate.
 
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo. 
+<img src="http://g.recordit.co/HFACer1eXi.gif" alt="Login as manager and dashboard is displayed" height=auto width=75%/>
 
-Then install the library dependencies. Run:
+To login as a customer, the username is "customer" and then the customer's id number. In example, enter the username "customer20" and the password "overlook2020" and click submit. A dashboard is displayed that shows the customer's past, current, and upcoming bookings. The customer's reward points, which is the same as their total dollar amount spent, displays at the bottom. A customer can also select a date to see available rooms that can be booked.
 
-```bash
-npm install
-```
+<img src="http://g.recordit.co/BjWjfUineb.gif" alt="Login as manager and dashboard is displayed" height=auto width=75%/>
 
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with some `h1` text, Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
+### Setup/Install
 
-## Where to Add Your Code
+* `git clone git@github.com:NicoleLatifi/overlook.git`
+* `cd` into the repository and open it in your favorite text editor
+* from the root of this directory, run `npm install` to download the dependencies
+* to get dependencies for testing with chai-spies, run `npm install chai-spies`
+* if you would like to run tests, run `npm test` from the root directory in your terminal
+* to launch the application run `npm start` and navigate to `http://localhost:8080/` in your favorite browser
 
-### JavaScript
 
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
+### Wins
 
-**Create all of your feature code files in the `src` directory.**
+* used fetch to both get and post data
+* troubleshooted with debugger in DevTools to fix problems in codebase
+* auditted the web application with Lighthouse and achieved a score of 100
+* built features from start to finish instead of writing all tests and under the hood functionality before hooking anything up to the DOM
 
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
+### Challenges
 
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
+* finalizing a class structure when it seemed that there were a few different approachs that could work
+* maximizing the benefits of SASS by using variables and functions
 
-### HTML
+### Future Iterations
 
-Add the HTML you need in the `index.html` file in the `./src` directory. There is some boilerplate HTML that exists from the start that you can modify.
+This app has potential for further features, which could include:
 
-### CSS (SCSS/SASS)
-
-This project is setup to use SCSS/SASS files by default instead of your regular CSS files. Add your SCSS files in the `src/css` directory. There is a `base.scss` file already there, but you can change this file and add multiple SCSS files in this directory.
-
-This might sound weird, but you need to `import` your SCSS files in the JavaScript entry file (`index.js`) for the styles to be applied to your HTML. The example `base.scss` file has already been imported in the JavaScript entry file as an example.
-
-### Images
-
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`index.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
-
-## How to View Your Code in Action
-
-In the terminal, run:
-
-```bash
-npm start
-```
-
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
-
-```bash
-Project is running at http://localhost:8080/
-```
-
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
-
----
-
-## Test Files Organization
-
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
-
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
-
-## Running Your Tests
-
-Run your test suite using the command:
-
-```bash
-npm test
-```
-
-The test results will output to the terminal.
-
----
-
-## Linting Your Code
-
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
-
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory. 
-
-## Webpack?
-
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
-
-## Deploying to GitHub Pages
-
-_If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
-
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
-
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+* creation of a more rigorous testing suite, including sad path exploration and more robust `chai-spies` utilization.
+* use of `Webpack` to build and deploy the application.

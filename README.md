@@ -1,7 +1,7 @@
 # Overlook
 #### Mod-2 Solo Project by [Nicole Latifi](GitHub.com/NicoleLatifi)
 
-This project, is a hotel management tool for hotel customers and staff to manage room bookings.
+This project is a hotel management tool for hotel customers and staff to manage room bookings.
 
 ### Learning Goals
 

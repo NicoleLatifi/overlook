@@ -48,3 +48,4 @@ This app has potential for further features, which could include:
 
 * creation of a more rigorous testing suite, including sad path exploration and more robust `chai-spies` utilization.
 * use of `Webpack` to build and deploy the application.
+* further build out admin dashboard
